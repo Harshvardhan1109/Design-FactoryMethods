@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace UOW.Infrastructure.RepositoryInterfaces
 {
-    internal interface IUnitOfWork:IDisposable
+    public interface IUnitOfWork:IDisposable
     {
+        IEmployeeRepository _employeeRepository { get; }
+        Task<int> Save();
     }
 }

@@ -1,3 +1,6 @@
+using UOW.Core;
+using UOW.Infrastructure.ServiceExtensions;
+
 namespace FactoryMethodsWebAPI
 {
     public class Program
@@ -9,6 +12,9 @@ namespace FactoryMethodsWebAPI
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddDIServices_UOWInfrastucture(builder.Configuration);
+            builder.Services.AddDIServices_UOWServices();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
