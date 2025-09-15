@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SimpleFactory.Factories;
+using SimpleFactory.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +28,11 @@ namespace UOW.Services.ControllerImplementation
             emp.EmploymentTypeId = employee.EmploymentTypeId;
             emp.RoleId = employee.RoleId;
             emp.DepartmentId = employee.DepartmentId;
+
+            EmployeeManagerFactory simpleFactory=new EmployeeManagerFactory();
+            EmployeeManager empManager= simpleFactory.GetEmpoyeeManager(emp);
+            emp.Salary = empManager.CalcualteSalary();
+            emp.BonusPercentage = empManager.CalculateBonus();
 
             await _uow._employeeRepository.Add(emp);
             var result = await _uow.Save();
