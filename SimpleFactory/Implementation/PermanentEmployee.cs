@@ -8,7 +8,7 @@ using UOW.Infrastructure.Models;
 
 namespace SimpleFactory.Implementation
 {
-    public class PermanentEmployee : EmployeeManager
+    public class PermanentEmployee : EmployeeSimpleManager
     {
         public PermanentEmployee(Employee employee) : base(employee)
         {
