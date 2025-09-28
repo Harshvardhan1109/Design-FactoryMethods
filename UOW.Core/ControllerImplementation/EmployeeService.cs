@@ -29,10 +29,10 @@ namespace UOW.Services.ControllerImplementation
             emp.RoleId = employee.RoleId;
             emp.DepartmentId = employee.DepartmentId;
 
-            EmployeeSimpleManagerFactory simpleFactory=new EmployeeSimpleManagerFactory();
-            EmployeeSimpleManager empSimpleManager = simpleFactory.GetEmpoyeeManager(emp);
-            emp.Salary = empSimpleManager.CalcualteSalary();
-            emp.BonusPercentage = empSimpleManager.CalculateBonus();
+            EmployeeManagerFactory simpleFactory=new EmployeeManagerFactory();
+            EmployeeManager empManager= simpleFactory.GetEmpoyeeManager(emp);
+            emp.Salary = empManager.CalcualteSalary();
+            emp.BonusPercentage = empManager.CalculateBonus();
 
             await _uow._employeeRepository.Add(emp);
             var result = await _uow.Save();
@@ -101,11 +101,6 @@ namespace UOW.Services.ControllerImplementation
             emp.DepartmentId = employee.DepartmentId;
             emp.RoleId = employee.RoleId;
             emp.EmploymentTypeId = employee.EmploymentTypeId;
-
-            EmployeeSimpleManagerFactory simpleFactory = new EmployeeSimpleManagerFactory();
-            EmployeeSimpleManager empSimpleManager = simpleFactory.GetEmpoyeeManager(emp);
-            emp.Salary = empSimpleManager.CalcualteSalary();
-            emp.BonusPercentage = empSimpleManager.CalculateBonus();
 
             _uow._employeeRepository.Update(emp);
             var result = await _uow.Save();

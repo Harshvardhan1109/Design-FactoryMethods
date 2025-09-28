@@ -8,7 +8,7 @@ using UOW.Infrastructure.Models;
 
 namespace SimpleFactory.Implementation
 {
-    public class VendorEmployee : EmployeeSimpleManager
+    public class VendorEmployee : EmployeeManager
     {
         public VendorEmployee(Employee employee) : base(employee)
         {

@@ -7,10 +7,10 @@ using UOW.Infrastructure.Models;
 
 namespace SimpleFactory.Interface
 {
-    public abstract class EmployeeSimpleManager
+    public abstract class EmployeeManager
     {
         protected Employee _employee;
-        protected EmployeeSimpleManager(Employee employee)
+        protected EmployeeManager(Employee employee)
         {
             _employee = employee;
         }
