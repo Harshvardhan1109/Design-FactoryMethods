@@ -14,13 +14,12 @@ namespace UOW.Services.ControllerModels
         public Guid EmploymentTypeId { get; set; }
         public Guid RoleId { get; set; }
         public Guid DepartmentId { get; set; }
-
     }
 
     public class EmployeeDetailResponse : EmployeeDetail
     {
-        public Decimal HouseAllowance { get; set; }
-        public Decimal MedicalAllowance { get; set; }
+        public Decimal? HouseAllowance { get; set; }
+        public Decimal? MedicalAllowance { get; set; }
         public Decimal Salary { get; set; }
         public Decimal Bonus { get; set; }
 

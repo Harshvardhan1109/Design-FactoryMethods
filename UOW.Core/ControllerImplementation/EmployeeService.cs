@@ -1,4 +1,6 @@
-﻿using SimpleFactory.Factories;
+﻿using FactoryMethod.Factories;
+using FactoryMethod.Interfaces;
+using SimpleFactory.Factories;
 using SimpleFactory.Interface;
 using System;
 using System.Collections.Generic;
@@ -29,10 +31,17 @@ namespace UOW.Services.ControllerImplementation
             emp.RoleId = employee.RoleId;
             emp.DepartmentId = employee.DepartmentId;
 
-            EmployeeSimpleFactory simpleFactory=new EmployeeSimpleFactory();
-            EmployeeSimpleFactoryManager empManager = simpleFactory.GetEmpoyeeManager(emp);
-            emp.Salary = empManager.CalcualteSalary();
-            emp.BonusPercentage = empManager.CalculateBonus();
+            #region SIMPLE FACTORY IMPLEMENTATION
+            //EmployeeSimpleFactory simpleFactory=new EmployeeSimpleFactory();
+            //EmployeeSimpleFactoryManager empManager = simpleFactory.GetEmpoyeeManager(emp);
+            //emp.Salary = empManager.CalcualteSalary();
+            //emp.BonusPercentage = empManager.CalculateBonus();
+            #endregion
+
+            #region FACTORY METHOD IMPLEMENTATION
+            BaseEmployeeFactory factory = new EmployeeFactory().Create(emp);
+            factory.GetSalaryDetails();
+            #endregion
 
             await _uow._employeeRepository.Add(emp);
             var result = await _uow.Save();
@@ -102,10 +111,17 @@ namespace UOW.Services.ControllerImplementation
             emp.RoleId = employee.RoleId;
             emp.EmploymentTypeId = employee.EmploymentTypeId;
 
-            EmployeeSimpleFactory simpleFactory = new EmployeeSimpleFactory();
-            EmployeeSimpleFactoryManager empManager = simpleFactory.GetEmpoyeeManager(emp);
-            emp.Salary = empManager.CalcualteSalary();
-            emp.BonusPercentage = empManager.CalculateBonus();
+            #region SIMPLE FACTORY IMPLEMENTATION
+            //EmployeeSimpleFactory simpleFactory=new EmployeeSimpleFactory();
+            //EmployeeSimpleFactoryManager empManager = simpleFactory.GetEmpoyeeManager(emp);
+            //emp.Salary = empManager.CalcualteSalary();
+            //emp.BonusPercentage = empManager.CalculateBonus();
+            #endregion
+
+            #region FACTORY METHOD IMPLEMENTATION
+            BaseEmployeeFactory factory = new EmployeeFactory().Create(emp);
+            factory.GetSalaryDetails();
+            #endregion
 
             _uow._employeeRepository.Update(emp);
             var result = await _uow.Save();

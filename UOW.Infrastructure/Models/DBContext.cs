@@ -43,15 +43,15 @@ namespace UOW.Infrastructure.Models
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.BonusPercentage).HasColumnType("decimal(3, 2)");
+                entity.Property(e => e.BonusPercentage).HasColumnType("decimal(5, 2)");
 
                 entity.Property(e => e.FirstName).HasMaxLength(100);
 
-                entity.Property(e => e.HomeAllowance).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.HomeAllowance).HasColumnType("decimal(18, 10)");
 
                 entity.Property(e => e.LastName).HasMaxLength(100);
 
-                entity.Property(e => e.MedicalAllowance).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.MedicalAllowance).HasColumnType("decimal(18, 10)");
 
                 entity.Property(e => e.Salary).HasColumnType("decimal(12, 2)");
 
