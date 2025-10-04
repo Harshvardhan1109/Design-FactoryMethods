@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace UOW.Infrastructure.Models
 {
-    public partial class DBContext : DbContext
+    public partial class MyDbContext : DbContext
     {
-        public DBContext()
+        public MyDbContext()
         {
         }
 
-        public DBContext(DbContextOptions<DBContext> options)
+        public MyDbContext(DbContextOptions<MyDbContext> options)
             : base(options)
         {
         }

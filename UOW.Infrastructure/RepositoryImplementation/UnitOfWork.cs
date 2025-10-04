@@ -10,10 +10,10 @@ namespace UOW.Infrastructure.RepositoryImplementation
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DBContext _dbContext;
+        public readonly MyDbContext _dbContext;
         public IEmployeeRepository _employeeRepository { get; }
 
-        public UnitOfWork(IEmployeeRepository employeeRepository, DBContext dbContext)
+        public UnitOfWork(IEmployeeRepository employeeRepository, MyDbContext dbContext)
         {
             _employeeRepository = employeeRepository;
             _dbContext = dbContext;

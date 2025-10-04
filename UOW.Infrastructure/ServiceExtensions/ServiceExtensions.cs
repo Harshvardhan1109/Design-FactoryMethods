@@ -11,11 +11,11 @@ namespace UOW.Infrastructure.ServiceExtensions
     {
         public static IServiceCollection AddDIServices_UOWInfrastucture(this IServiceCollection services, IConfiguration config)
         {
-            services.AddDbContext<DBContext>(options => {
+            services.AddDbContext<MyDbContext>(options => {
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
             });
-            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();            
 
             return services;
         }

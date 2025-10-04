@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.CompilerServices;
 using UOW.Infrastructure.Models;
+using UOW.Services.ControllerImplementation;
 using UOW.Services.ControllerInterfaces;
 
 namespace UOW.Core
@@ -9,7 +10,7 @@ namespace UOW.Core
     {
         public static IServiceCollection AddDIServices_UOWServices(this IServiceCollection services)
         {
-            services.AddScoped<IEmployeeService, IEmployeeService>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
             return services;
         }
     }

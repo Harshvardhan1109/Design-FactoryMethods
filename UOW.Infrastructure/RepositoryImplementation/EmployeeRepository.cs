@@ -11,7 +11,7 @@ namespace UOW.Infrastructure.RepositoryImplementation
 {
     public class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository
     {
-        public EmployeeRepository(DbContext dbContext) : base(dbContext)
+        public EmployeeRepository(MyDbContext dbContext) : base(dbContext)
         {
         }
     }

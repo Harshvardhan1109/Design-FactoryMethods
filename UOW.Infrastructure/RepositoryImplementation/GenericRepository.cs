@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UOW.Infrastructure.Models;
 using UOW.Infrastructure.RepositoryInterfaces;
 
 namespace UOW.Infrastructure.RepositoryImplementation
 {
     public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private DbContext _dbContext;
-        protected GenericRepository(DbContext dbContext)
+        private MyDbContext _dbContext;
+        protected GenericRepository(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
