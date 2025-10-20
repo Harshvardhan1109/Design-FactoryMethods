@@ -22,5 +22,7 @@ namespace UOW.Services.ControllerModels
         public Decimal? MedicalAllowance { get; set; }
         public Decimal Salary { get; set; }
         public Decimal Bonus { get; set; }
+        public String? SystemDetails { get; set; }
+        public String? ExtaAssets { get; set; }
     }
 }

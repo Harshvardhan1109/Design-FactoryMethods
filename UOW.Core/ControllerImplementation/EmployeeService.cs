@@ -1,4 +1,6 @@
-﻿using FactoryMethod.Factories;
+﻿using AbstractFactory.Factories;
+using AbstractFactory.Interfaces;
+using FactoryMethod.Factories;
 using FactoryMethod.Interfaces;
 using SimpleFactory.Factories;
 using SimpleFactory.Interface;
@@ -43,6 +45,12 @@ namespace UOW.Services.ControllerImplementation
             factory.GetSalaryDetails();
             #endregion
 
+            #region ABSTRACT FACTORY METHOD IMPLEMENTATION
+            IComputerFactory getComputerFactory =new ComputerAbstractFactory().GetComputerFactory(emp);
+            String systemDetails = new EmployeeAbstractFactoryManager(getComputerFactory).GetSystemDetails();
+            emp.SystemDetails = systemDetails;
+            #endregion
+
             await _uow._employeeRepository.Add(emp);
             var result = await _uow.Save();
 
@@ -78,7 +86,8 @@ namespace UOW.Services.ControllerImplementation
                     Salary = emp.Salary,
                     Bonus = emp.BonusPercentage,
                     HouseAllowance = emp.HomeAllowance,
-                    MedicalAllowance = emp.MedicalAllowance
+                    MedicalAllowance = emp.MedicalAllowance,
+                    SystemDetails=emp.SystemDetails
                 });
             }
             return list;
@@ -98,7 +107,8 @@ namespace UOW.Services.ControllerImplementation
                 Salary = result.Salary,
                 Bonus = result.BonusPercentage,
                 HouseAllowance = result.HomeAllowance,
-                MedicalAllowance = result.MedicalAllowance
+                MedicalAllowance = result.MedicalAllowance,
+                SystemDetails=result.SystemDetails
             };
         }
 
@@ -123,10 +133,15 @@ namespace UOW.Services.ControllerImplementation
             factory.GetSalaryDetails();
             #endregion
 
+            #region ABSTRACT FACTORY METHOD IMPLEMENTATION
+            IComputerFactory getComputerFactory = new ComputerAbstractFactory().GetComputerFactory(emp);
+            String systemDetails = new EmployeeAbstractFactoryManager(getComputerFactory).GetSystemDetails();
+            emp.SystemDetails = systemDetails;
+            #endregion
+
             _uow._employeeRepository.Update(emp);
             var result = await _uow.Save();
             return result > 0 ? true : false;
-
         }
     }
 }
